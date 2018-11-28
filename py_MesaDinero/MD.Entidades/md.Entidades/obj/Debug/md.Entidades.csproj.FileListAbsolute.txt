@@ -1,0 +1,5 @@
+D:\MesaDinero\App\py_MesaDinero\MD.Entidades\md.Entidades\bin\Debug\md.Entidades.dll
+D:\MesaDinero\App\py_MesaDinero\MD.Entidades\md.Entidades\bin\Debug\md.Entidades.pdb
+D:\MesaDinero\App\py_MesaDinero\MD.Entidades\md.Entidades\obj\Debug\md.Entidades.csprojResolveAssemblyReference.cache
+D:\MesaDinero\App\py_MesaDinero\MD.Entidades\md.Entidades\obj\Debug\md.Entidades.dll
+D:\MesaDinero\App\py_MesaDinero\MD.Entidades\md.Entidades\obj\Debug\md.Entidades.pdb
