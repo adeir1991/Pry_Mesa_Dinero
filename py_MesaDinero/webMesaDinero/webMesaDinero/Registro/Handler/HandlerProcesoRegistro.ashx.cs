@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.IO;
+using md.Entidades;
+using md.Entidades.Registro;
 
 
 namespace webMesaDinero.Registro.Handler
@@ -11,19 +13,23 @@ namespace webMesaDinero.Registro.Handler
     /// <summary>
     /// Handler del Proceso de Registro de Cliente
     /// </summary>
+    
     public class HandlerProcesoRegistro : IHttpHandler
     {
 
+        BeanClienteDatosBasicos _BeanClienteDatosBasicos = null;
+        BeanResultado  _BeanResultado = null;
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
+            _BeanClienteDatosBasicos = new BeanClienteDatosBasicos();
             string strJson = new StreamReader(context.Request.InputStream).ReadToEnd();
-            userInfo objUsr = Deserialize<userInfo>(strJson);
-            if (objUsr != null)
+            _BeanClienteDatosBasicos = Deserialize<BeanClienteDatosBasicos>(strJson);
+            if (_BeanClienteDatosBasicos != null)
             {
-                string fullName = objUsr.vNombre + " " + objUsr.vApellido;
-                string age = objUsr.vCorreo;
-                string qua = objUsr.vCelular;
+                string fullName = _BeanClienteDatosBasicos.strNombre + " " + _BeanClienteDatosBasicos.strApellido;
+                string age = _BeanClienteDatosBasicos.strCorreo;
+                string qua = _BeanClienteDatosBasicos.strCelular;
                 context.Response.Write(string.Format("Name :{0} , Age={1}, Qualification={2}", fullName, age, qua));
             }
             else
@@ -32,27 +38,22 @@ namespace webMesaDinero.Registro.Handler
             }
 
         }
-        public class userInfo
-        {
-            public string vNombre { get; set; }
-            public string vApellido { get; set; }
-            public string vCorreo { get; set; }
-            public string vCelular { get; set; }
-
-        }
+    
         public T Deserialize<T>(string context)
         {
             string jsonData = context;
             var obj = (T)new JavaScriptSerializer().Deserialize<T>(jsonData);
             return obj;
         }
-        public string func_GrabarCliente()
+
+        public BeanResultado RegistrarClienteDatosBasicos(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
         {
+            _BeanResultado = new BeanResultado();
 
-            return "";
+            return _BeanResultado;
+
         }
-
-
+    
         public bool IsReusable
         {
             get
@@ -60,5 +61,6 @@ namespace webMesaDinero.Registro.Handler
                 return false;
             }
         }
+
     }
 }

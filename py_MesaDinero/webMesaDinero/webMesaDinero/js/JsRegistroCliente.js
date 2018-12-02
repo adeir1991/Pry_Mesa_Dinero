@@ -10,14 +10,15 @@ jQuery(function ($) {
 
 
     $('#to-password').on('click', function () {        
-        
+
+        var Tipo = $("#idPersona").val();
         var Nombre = $("#Nombre").val();
         var Apellido = $("#Apellido").val();
         var Correo = $("#Correo").val();
-        var Celular = $("#Celular").val();
+        var Celular = $("#Celular").val();        
         //var datos = new FormData();
-        //datos.append("Option", "Registro");        
-        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo };
+        //datos.append("Option", "Registro");   
+        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };
 
         ProyectoMD.AJAX("Handler/HandlerProcesoRegistro.ashx", datos, function (resultado) {
             $("#Fondo").fadeOut(250);

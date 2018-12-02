@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Registro/WfrmMasterPageRegistro.Master" AutoEventWireup="true" CodeBehind="WfrmRegistro.aspx.cs" Inherits="webMesaDinero.Registro.WfrmRegistro" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
     <script src="../js/JsAjaxProcess.js"></script>
     <script src="../js/JsRegistroCliente.js"></script>
 </asp:Content>
@@ -16,6 +16,7 @@
 			            <p>para continuar con tu registro</p>
 			        </div>
                     <div class="form">
+                        <input type="text" name="idPersona" id="idPersona" value="P" style="display: none;" />
 			            <div class="login-selection">
 				            <div id="login-people" class="people active">
 					            <span>Persona</span>
