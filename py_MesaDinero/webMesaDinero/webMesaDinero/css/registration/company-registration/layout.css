@@ -1,0 +1,42 @@
+.company-block {
+	width: 90%;
+	margin: auto;
+	display: grid;
+	grid-template-columns: 7fr 1fr;
+	grid-template-rows: auto auto;
+	row-gap: 2vh;
+	column-gap: 1vw;
+	grid-template-areas:
+		"sub-title-1 ."
+		"content-block btn-round";
+	margin-bottom: 3vh;
+}
+.company-block.logo-container {
+	margin-bottom: 1vh;
+}
+.company-block > .sub-title {
+	grid-area: sub-title-1;
+}
+.company-block > .company-block-content {
+	grid-area: content-block;
+	display: grid;
+	grid-template-columns: repeat( auto-fit, minmax(170px, 1fr) );
+	column-gap: 2.5%;
+	row-gap: 2vh;
+}
+.company-block.authorized-people > .company-block-content {
+	grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
+}
+.company-block > .btn-round {
+	grid-area: btn-round;
+	align-self: end;
+}
+.company-btn {
+	margin-left: 5%;
+	width: 12%;
+	height: 5vh;
+	margin-bottom: 1vh;
+}
+.company-block fancy-input, .company-block .custom-select {
+	height: 5vh;
+}

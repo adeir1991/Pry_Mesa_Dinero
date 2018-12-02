@@ -1,0 +1,82 @@
+exchanger-input {
+	position: relative;
+}
+exchanger-input > div {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	display: grid;
+	background-color: #fff;
+	grid-template-rows: .9fr 1.1fr;
+	grid-template-columns: .2fr 2.3fr .5fr 1fr;
+	grid-template-areas:
+		". label icon flags"
+		". input icon flags";
+	border-radius: 3px;
+}
+.label {
+	grid-area: label;
+	color: #ababab;
+	align-self: end;
+	font-size: 2.4vh;
+	font-family: 'Helvetica Neue Roman';
+}
+.input {
+	grid-area: input;
+	outline: none;
+	border: none;
+	font-size: 4vh;
+	font-family: 'Helvetica Neue Roman';
+	color: var(--main-blue);
+}
+.input::placeholder {
+	color: var(--main-blue);
+}
+.icon {
+	grid-area: icon;
+}
+.flags {
+	grid-area: flags;
+	background-color: var(--btn-blue);
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+	display: grid;
+	grid-template-columns: 1.2fr .1fr .8fr;
+	grid-template-rows: 1fr;
+}
+.flags > * {
+	align-self: center;
+}
+.DOL, .PEN {
+	place-self: stretch;
+	grid-row: span 1;
+	grid-column: 1 / 2;
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: center;
+}
+.flags > .currency {
+	align-self: center;
+	justify-self: end;
+	text-align: center;
+	color: #fff;
+	font-family: 'Helvetica Neue Roman';
+	font-size: 3vh;
+}
+.flags > .arrow {
+	place-self: stretch stretch;
+	grid-row: span 1;
+	grid-column: 3 / 4;
+	background-repeat: no-repeat;
+	background-size: 23%;
+	background-position: center;
+	background-image: url('../../images/icons/arrow-down.svg');
+}
+.DOL {
+	background-image: url('../../images/icons/usa.svg');
+}
+.PEN {
+	background-image: url('../../images/icons/peru.svg');
+}

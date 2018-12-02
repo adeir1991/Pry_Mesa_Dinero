@@ -1,0 +1,149 @@
+register-auction-container, .register-auction-content {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.register-auction-content {
+	display: grid; /*this could change*/
+	grid-template-rows: 12% auto;
+	grid-template-columns: 1fr;
+}
+.register-auction-header {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 6% 13% 1fr 4% 4% 1% 2.7%;
+	grid-template-areas:
+		". cmpnt-1 cmpnt-2 cmpnt-3 . cmpnt-4 ."
+}
+.register-auction-header > .cmpnt-1 {
+	grid-area: cmpnt-1;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 2fr 3fr 1fr;
+}
+.register-auction-header > .cmpnt-1 > div {
+	grid-row: 2 / 3;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url('../images/ninth-container/logo-footer.svg');
+}
+.register-auction-header > .cmpnt-2 {
+	grid-area: cmpnt-2;
+}
+.register-auction-header > .cmpnt-3 {
+	grid-area: cmpnt-3;
+	text-align: center;
+	color: #9ea0a2;
+	font-size: 1.3vw;
+	font-family: 'Helvetica Neue Roman';
+	place-self: center center;
+	border-radius: 50%;
+	border: 1px solid #9ea0a2;
+	padding: 20% 15% 20% 15%;
+	cursor: pointer;
+}
+.register-auction-header > .cmpnt-4 {
+	grid-area: cmpnt-4;
+	background-image: url('../images/form-base-container/equis-cerrar.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+.register-auction-body {
+	height: auto;
+	width: 100%;
+}
+/*Button styles*/
+.register-auction-body .btn, .list-container .btn {
+	font-size: 1.2vw;
+	width: 100%;
+	height: 100%;
+	border-radius: .5vh;
+	font-family: 'Helvetica Neue Roman';
+	cursor: pointer;
+	line-height: 3.2vw;
+	display: grid;
+}
+.register-auction-body .btn.regular, .list-container .btn.regular {
+	background-color: var(--main-orange);
+	color: #fff;
+}
+.register-auction-body .btn.blue-style, .list-container .btn.blue-style {
+	background-color: var(--main-blue);
+	color: #fff;
+}
+.register-auction-body .btn.grey-style, .list-container .btn.grey-style {
+	background-color: #B5B5B5;
+	color: #fff;
+}
+.register-auction-body .btn.bordered, .list-container .btn.bordered {
+	background-color: #fff;
+	color: var(--main-orange);
+	border: 1px solid var(--main-orange);
+}
+.register-auction-body .btn.blue-bordered, .list-container .btn.blue-bordered {
+	background-color: #fff;
+	color: var(--main-blue);
+	border: 1px solid var(--main-blue);
+}
+.register-auction-body .btn .btn-text, .list-container .btn .btn-text {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	place-self: center;
+}
+/*Titles and parragraph styles*/
+.register-auction-body .main-header-container {
+	text-align: center;
+	margin: 6vh 0 2vh 0;
+}
+.register-auction-body .main-header-container > .main-title {
+	color: var(--main-blue);
+	font-size: 1.8vw;
+	font-family: 'Helvetica Neue Roman';
+}
+.register-auction-body .main-header-container >  .main-parragraph {
+	color: #666666;
+	font-size: 1vw;
+	margin-top: 1vh;
+}
+.sub-title {
+	font-size: 1.1vw;
+	color: #999999;
+}
+/*custom select*/
+.custom-select {
+	width: 100%;
+	background-color: #fff;
+	border: none;
+	border-bottom: 1px solid #999999;
+	outline: none;
+	color: #999999;
+	font-size: 1.1vw;
+	background: transparent;
+	background: url("../images/icons/caret-down-solid.svg") no-repeat right #fff;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-size: 10px;
+}
+.custom-select:focus {
+	outline: none;
+	color: var(--main-blue);
+	border-bottom-color: var(--main-blue);
+}
+.custom-select .custom-option {
+	background-color: #fff;
+	padding: 2px;
+}
+.custom-select:focus option.not-an-option:not(selected) {
+	display: none;
+}
+/*.register-auction-body .custom-select:focus option:focus-within,
+.register-auction-body .custom-select:focus option:hover,
+.register-auction-body .custom-select:focus option:active,
+.register-auction-body .custom-select:focus option:checked {
+	background-color: var(--main-blue);
+}*/

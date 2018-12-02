@@ -1,0 +1,55 @@
+:root {
+	--main-blue: #004484;
+	--btn-blue: #2b6ba8;
+    --font-blue: #25abca;
+	--main-orange: #ce7535;
+    --main-gray: #a7a9ac;
+    --plomo-light: #a7a9ac;
+}
+@font-face {
+	font-family: 'Helvetica Neue Roman';
+	src: url('./fonts/HelveticaNeue-Roman.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Helvetica Neue Thin';
+	src: url('./fonts/HelveticaNeue-Thin.otf') format('truetype');
+}
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Helvetica Neue Thin';
+	user-select: none;
+}
+html, body, main-container {
+	height: 100%;
+	width: 100%;
+}
+second-container, third-container, fourth-container, fifth-container,
+sixth-container, seventh-container, eighth-container, ninth-container {
+	display: block;
+	width: 100%;
+}
+second-container {
+	height: 59%;
+}
+third-container {
+	height: 157%;
+}
+fourth-container {
+	height: 108.3%;
+}
+fifth-container {
+	height: 136%;
+}
+sixth-container {
+	height: 48%;
+}
+seventh-container {
+	height: 71%;
+}
+eighth-container {
+	height: 51.62%;
+}
+ninth-container {
+	height: 60.2%;
+}

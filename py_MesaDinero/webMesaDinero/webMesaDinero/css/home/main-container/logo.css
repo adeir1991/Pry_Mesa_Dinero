@@ -1,0 +1,14 @@
+meta-logo {
+	display: grid;
+	grid-template-rows: 72.727% 1fr;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		"logo-content"
+		".";
+}
+.logo-content {
+	grid-area: logo-content;
+	background-image: url('../../images/icons/logo-01.svg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
