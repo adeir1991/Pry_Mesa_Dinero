@@ -50,10 +50,14 @@ var ProyectoMD = {
             dataType: "json",
             async: false,
             success: function (result) {
-                if (result.d != null) {
-                    Response = result.d;
-                    if (typeof callbackOK == 'function') { callbackOK.call(this); }
+                if (result != null) {
+                    Response = result;
+                    if (typeof callbackOK == 'function') { callbackOK.call(result); }
                 }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+            var error = eval("(" + XMLHttpRequest.responseText + ")");
+                aler(error.Message);
             }
         });
         return Response;

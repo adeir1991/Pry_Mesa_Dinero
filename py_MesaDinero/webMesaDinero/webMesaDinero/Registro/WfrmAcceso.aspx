@@ -12,7 +12,7 @@
 			                <base-input type="text" placeholder="Correo"><div class="base-input-content"><input  placeholder="Correo" type="text"></div></base-input>
 			                <base-input type="password" placeholder="Contraseña"><div class="base-input-content"><input placeholder="Contraseña" type="password"><span class="view"></span></div></base-input>
 			                <div id="to-recovery" class="middle-text link">Recuperar Contraseña</div>
-			                <div class="base-btn">
+			                <div id="to-login" class="base-btn">
 				                <span class="base-btn-icon"></span>
 				                <span class="base-btn-text">Iniciar Sesión</span>
 			                </div>

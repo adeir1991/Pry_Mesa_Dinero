@@ -7,22 +7,57 @@ jQuery(function ($) {
 
     //InitComponents();
 
-
-
-    $('#to-password').on('click', function () {        
-
+    $('#to-password').on('click', function () { 
         var Tipo = $("#idPersona").val();
         var Nombre = $("#Nombre").val();
         var Apellido = $("#Apellido").val();
         var Correo = $("#Correo").val();
         var Celular = $("#Celular").val();        
-        //var datos = new FormData();
-        //datos.append("Option", "Registro");   
-        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };
+        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };              
+        $.ajax({
+            method: "POST",
+            url: "Handler/HandlerProcesoRegistro.ashx",
+            data: JSON.stringify(datos),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (result) {          
+                if (result.blnResultado == true) {
+                    alert("Registro Grabado corectamente!");
+                } else {
+                    alert("Ha ocurrido un error: " + result.strMensaje);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+            var error = eval("(" + XMLHttpRequest.responseText + ")");
+            aler(error.Message);
+            }
+        });
 
-        ProyectoMD.AJAX("Handler/HandlerProcesoRegistro.ashx", datos, function (resultado) {
-            $("#Fondo").fadeOut(250);
-            window.location.href = resultado;
+    });
+
+    $('#to-login').on('click', function () {
+        var Email = $("#idPersona").val();
+        var Clave = $("#Nombre").val();
+        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };
+        $.ajax({
+            method: "POST",
+            url: "Handler/HandlerProcesoRegistro.ashx",
+            data: JSON.stringify(datos),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                if (result.blnResultado == true) {
+                    alert("Registro Grabado corectamente!");
+                } else {
+                    alert("Ha ocurrido un error: " + result.strMensaje);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+                var error = eval("(" + XMLHttpRequest.responseText + ")");
+                aler(error.Message);
+            }
         });
 
     });
@@ -30,7 +65,6 @@ jQuery(function ($) {
 
 //#region Funciones
 function InitComponents() {
-
 //    VulcoCode.CloseEffect("panelmensaje");
 //    VulcoCode.CloseEffect("PnlPrincipal");
 }

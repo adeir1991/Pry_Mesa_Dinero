@@ -6,19 +6,15 @@ using System.Web.Script.Serialization;
 using System.IO;
 using md.Entidades;
 using md.Entidades.Registro;
-
+using md.Negocio.Registro;
 
 namespace webMesaDinero.Registro.Handler
 {
-    /// <summary>
-    /// Handler del Proceso de Registro de Cliente
-    /// </summary>
-    
-    public class HandlerProcesoRegistro : IHttpHandler
+     public class HandlerProcesoRegistro : IHttpHandler
     {
-
         BeanClienteDatosBasicos _BeanClienteDatosBasicos = null;
         BeanResultado  _BeanResultado = null;
+        NegClienteDatosBasicos _NegClienteDatosBasicos = null;
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -27,10 +23,12 @@ namespace webMesaDinero.Registro.Handler
             _BeanClienteDatosBasicos = Deserialize<BeanClienteDatosBasicos>(strJson);
             if (_BeanClienteDatosBasicos != null)
             {
-                string fullName = _BeanClienteDatosBasicos.strNombre + " " + _BeanClienteDatosBasicos.strApellido;
-                string age = _BeanClienteDatosBasicos.strCorreo;
-                string qua = _BeanClienteDatosBasicos.strCelular;
-                context.Response.Write(string.Format("Name :{0} , Age={1}, Qualification={2}", fullName, age, qua));
+                string fullName = _BeanClienteDatosBasicos.vNombre + " " + _BeanClienteDatosBasicos.vApellido;
+                string age = _BeanClienteDatosBasicos.vCorreo;
+                string qua = _BeanClienteDatosBasicos.vCorreo;
+                _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);                
+                context.Response.ContentType ="text/plain";               
+                context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
             }
             else
             {
@@ -45,14 +43,6 @@ namespace webMesaDinero.Registro.Handler
             var obj = (T)new JavaScriptSerializer().Deserialize<T>(jsonData);
             return obj;
         }
-
-        public BeanResultado RegistrarClienteDatosBasicos(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
-        {
-            _BeanResultado = new BeanResultado();
-
-            return _BeanResultado;
-
-        }
     
         public bool IsReusable
         {
@@ -60,6 +50,14 @@ namespace webMesaDinero.Registro.Handler
             {
                 return false;
             }
+        }
+        
+        public BeanResultado RegistrarClienteDatosBasicos(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _BeanResultado = new BeanResultado();
+            _NegClienteDatosBasicos = new NegClienteDatosBasicos();
+            _BeanResultado = _NegClienteDatosBasicos.RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+            return _BeanResultado;
         }
 
     }
