@@ -13,5 +13,10 @@ namespace md.Entidades.Registro
         public string vCorreo { get; set; }
         public string vCelular { get; set; }
         public string vTipoCliente { get; set; }
+        public string vClaveAcceso { get; set; }
+        public string vIdCliente { get; set; }
+        public DateTime vFechaRegistro { get; set; }
+        
+
     }
 }

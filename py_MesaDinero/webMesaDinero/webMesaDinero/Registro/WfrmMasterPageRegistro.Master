@@ -12,6 +12,7 @@
     <link href="../css/general.css" rel="stylesheet" />
     <link href="../css/form-base-container/layout.css" rel="stylesheet" />
     <link href="../css/components/form-base-container/base-input/layout.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>     
     <!-- JS Registro-->    
     <script src="../js/tabs.js"></script>
 </head>

@@ -10,10 +10,13 @@ using md.Negocio.Registro;
 
 namespace webMesaDinero.Registro.Handler
 {
-     public class HandlerProcesoRegistro : IHttpHandler
+    /// <summary>
+    /// Descripción breve de HandlerProcesoAcceso
+    /// </summary>
+    public class HandlerProcesoAcceso : IHttpHandler
     {
         BeanClienteDatosBasicos _BeanClienteDatosBasicos = null;
-        BeanResultado  _BeanResultado = null;
+        BeanResultado _BeanResultado = null;
         NegClienteDatosBasicos _NegClienteDatosBasicos = null;
         public void ProcessRequest(HttpContext context)
         {
@@ -26,24 +29,16 @@ namespace webMesaDinero.Registro.Handler
                 //string fullName = _BeanClienteDatosBasicos.vNombre + " " + _BeanClienteDatosBasicos.vApellido;
                 //string age = _BeanClienteDatosBasicos.vCorreo;
                 //string qua = _BeanClienteDatosBasicos.vCorreo;
-                _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);                
-                context.Response.ContentType ="text/plain";               
+                _BeanResultado = ValidarAccesoCliente(_BeanClienteDatosBasicos);
+                context.Response.ContentType = "text/plain";
                 context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
             }
             else
             {
                 context.Response.Write("No Data");
             }
+        }
 
-        }
-    
-        public T Deserialize<T>(string context)
-        {
-            string jsonData = context;
-            var obj = (T)new JavaScriptSerializer().Deserialize<T>(jsonData);
-            return obj;
-        }
-    
         public bool IsReusable
         {
             get
@@ -51,12 +46,17 @@ namespace webMesaDinero.Registro.Handler
                 return false;
             }
         }
-        
-        public BeanResultado RegistrarClienteDatosBasicos(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        public T Deserialize<T>(string context)
+        {
+            string jsonData = context;
+            var obj = (T)new JavaScriptSerializer().Deserialize<T>(jsonData);
+            return obj;
+        }
+        public BeanResultado ValidarAccesoCliente(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
         {
             _BeanResultado = new BeanResultado();
             _NegClienteDatosBasicos = new NegClienteDatosBasicos();
-            _BeanResultado = _NegClienteDatosBasicos.RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+            _BeanResultado = _NegClienteDatosBasicos.ValidarAccesoCliente(_BeanClienteDatosBasicos);
             return _BeanResultado;
         }
 

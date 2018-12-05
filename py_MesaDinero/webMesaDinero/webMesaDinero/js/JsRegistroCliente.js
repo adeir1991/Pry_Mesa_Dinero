@@ -13,7 +13,7 @@ jQuery(function ($) {
         var Apellido = $("#Apellido").val();
         var Correo = $("#Correo").val();
         var Celular = $("#Celular").val();        
-        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };              
+        var datos = { vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };              
         $.ajax({
             method: "POST",
             url: "Handler/HandlerProcesoRegistro.ashx",
@@ -37,19 +37,21 @@ jQuery(function ($) {
     });
 
     $('#to-login').on('click', function () {
-        var Email = $("#idPersona").val();
-        var Clave = $("#Nombre").val();
-        var datos = { Option: "Registro", vNombre: Nombre, vApellido: Apellido, vCorreo: Correo, vCelular: Celular, vTipoCliente: Tipo };
+        var Email = $("#idEmail").val();
+        var Clave = $("#idClave").val();
+        var datos = { vCorreo: Email, vClaveAcceso: Clave };
         $.ajax({
             method: "POST",
-            url: "Handler/HandlerProcesoRegistro.ashx",
+            url: "Handler/HandlerProcesoAcceso.ashx",
             data: JSON.stringify(datos),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             async: false,
             success: function (result) {
                 if (result.blnResultado == true) {
-                    alert("Registro Grabado corectamente!");
+                    //alert("Registro Grabado corectamente!");
+                    alert("Bienvenido al sistema...porfavor complete sus datos!");
+                    location.href = "WfrmRegistroDatos.aspx";
                 } else {
                     alert("Ha ocurrido un error: " + result.strMensaje);
                 }

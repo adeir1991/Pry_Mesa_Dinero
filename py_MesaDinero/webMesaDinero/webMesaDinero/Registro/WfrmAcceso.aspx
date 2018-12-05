@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Registro/WfrmMasterPageRegistro.Master" AutoEventWireup="true" CodeBehind="WfrmAcceso.aspx.cs" Inherits="webMesaDinero.Registro.WfrmAcceso" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>     
+    <script src="../js/JsRegistroCliente.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <sign-in>
@@ -9,8 +11,17 @@
                     <div class="form-content">
                         <div class="form-base-title">Ingresa a tu cuenta</div>
                         <div class="form">
-			                <base-input type="text" placeholder="Correo"><div class="base-input-content"><input  placeholder="Correo" type="text"></div></base-input>
-			                <base-input type="password" placeholder="Contraseña"><div class="base-input-content"><input placeholder="Contraseña" type="password"><span class="view"></span></div></base-input>
+			                <base-input type="text" placeholder="Correo">
+                                <div class="base-input-content">
+                                    <input id="idEmail" placeholder="Correo" type="text">
+                                </div>
+			                </base-input>
+			                <base-input type="password" placeholder="Contraseña">
+                                <div class="base-input-content">
+                                    <input id="idClave" placeholder="Contraseña"  type="password">
+                                    <span class="view"></span>
+                                </div>
+			                </base-input>
 			                <div id="to-recovery" class="middle-text link">Recuperar Contraseña</div>
 			                <div id="to-login" class="base-btn">
 				                <span class="base-btn-icon"></span>
