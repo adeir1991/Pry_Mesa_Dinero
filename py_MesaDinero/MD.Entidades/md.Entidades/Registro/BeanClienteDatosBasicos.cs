@@ -8,6 +8,7 @@ namespace md.Entidades.Registro
 {
     public class BeanClienteDatosBasicos
     {
+        public string vOption { get; set; }
         public string vNombre { get; set; }
         public string vApellido { get; set; }
         public string vCorreo { get; set; }

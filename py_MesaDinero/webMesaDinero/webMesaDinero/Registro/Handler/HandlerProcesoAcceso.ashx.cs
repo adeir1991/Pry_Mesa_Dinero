@@ -26,9 +26,6 @@ namespace webMesaDinero.Registro.Handler
             _BeanClienteDatosBasicos = Deserialize<BeanClienteDatosBasicos>(strJson);
             if (_BeanClienteDatosBasicos != null)
             {
-                //string fullName = _BeanClienteDatosBasicos.vNombre + " " + _BeanClienteDatosBasicos.vApellido;
-                //string age = _BeanClienteDatosBasicos.vCorreo;
-                //string qua = _BeanClienteDatosBasicos.vCorreo;
                 _BeanResultado = ValidarAccesoCliente(_BeanClienteDatosBasicos);
                 context.Response.ContentType = "text/plain";
                 context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));

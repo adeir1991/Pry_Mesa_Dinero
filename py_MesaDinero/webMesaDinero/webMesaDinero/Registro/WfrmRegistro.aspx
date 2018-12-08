@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Registro/WfrmMasterPageRegistro.Master" AutoEventWireup="true" CodeBehind="WfrmRegistro.aspx.cs" Inherits="webMesaDinero.Registro.WfrmRegistro" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">  
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>     
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> 
+    <script src="../js/jquery.min.js"></script>
     <script src="../js/JsRegistroCliente.js"></script>
+    <script src="../js/tabs.js"></script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">    
       <login-form>
         <div class="form-base-container-content">
             <div class="dark-logo"></div>
@@ -37,8 +38,10 @@
 				            <span class="base-btn-text">Crear mi cuenta</span>
 			            </div>
 			            <div class="form-bottom-text">
+                            <span id="to-sign-in" class="link"><a href="WfrmConfirmarSMS.aspx">Poner Clave SMS</a></span>
 				            <span class="question">Ya estás Registrado?</span>
 				            <span id="to-sign-in" class="link"><a href="WfrmAcceso.aspx">Entra aquí</a></span>
+                          
 			            </div>
 		            </div>
                 </div>

@@ -23,12 +23,18 @@ namespace webMesaDinero.Registro.Handler
             _BeanClienteDatosBasicos = Deserialize<BeanClienteDatosBasicos>(strJson);
             if (_BeanClienteDatosBasicos != null)
             {
-                //string fullName = _BeanClienteDatosBasicos.vNombre + " " + _BeanClienteDatosBasicos.vApellido;
-                //string age = _BeanClienteDatosBasicos.vCorreo;
-                //string qua = _BeanClienteDatosBasicos.vCorreo;
-                _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);                
+                if (_BeanClienteDatosBasicos.vOption=="RegistroCliente")
+                {
+                    _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+                }
+                else if (_BeanClienteDatosBasicos.vOption == "ClaveSMS")
+                {
+                    _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+                }
+                
                 context.Response.ContentType ="text/plain";               
                 context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
+
             }
             else
             {
@@ -53,6 +59,14 @@ namespace webMesaDinero.Registro.Handler
         }
         
         public BeanResultado RegistrarClienteDatosBasicos(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _BeanResultado = new BeanResultado();
+            _NegClienteDatosBasicos = new NegClienteDatosBasicos();
+            _BeanResultado = _NegClienteDatosBasicos.RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+            return _BeanResultado;
+        }
+
+        public BeanResultado ValidarClaveSMS(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
         {
             _BeanResultado = new BeanResultado();
             _NegClienteDatosBasicos = new NegClienteDatosBasicos();

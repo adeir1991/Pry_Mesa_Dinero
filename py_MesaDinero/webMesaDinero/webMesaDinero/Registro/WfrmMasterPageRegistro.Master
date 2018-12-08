@@ -1,10 +1,9 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WfrmMasterPageRegistro.master.cs" Inherits="webMesaDinero.Registro.WfrmMasterPageRegistro" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -12,11 +11,11 @@
     <link href="../css/general.css" rel="stylesheet" />
     <link href="../css/form-base-container/layout.css" rel="stylesheet" />
     <link href="../css/components/form-base-container/base-input/layout.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>     
-    <!-- JS Registro-->    
-    <script src="../js/tabs.js"></script>
+    <!-- JS Registro-->     
+    <link rel="shortcut icon" href="#" />
 </head>
 <body>
+   
     <form id="form1" runat="server">
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

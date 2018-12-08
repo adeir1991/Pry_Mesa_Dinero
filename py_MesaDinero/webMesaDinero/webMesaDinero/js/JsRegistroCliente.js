@@ -7,6 +7,7 @@ jQuery(function ($) {
 
     //InitComponents();
 
+    //---Registro cliente
     $('#to-password').on('click', function () { 
         var Tipo = $("#idPersona").val();
         var Nombre = $("#Nombre").val();
@@ -36,6 +37,7 @@ jQuery(function ($) {
 
     });
 
+    //---Acceso Login
     $('#to-login').on('click', function () {
         var Email = $("#idEmail").val();
         var Clave = $("#idClave").val();
@@ -43,6 +45,34 @@ jQuery(function ($) {
         $.ajax({
             method: "POST",
             url: "Handler/HandlerProcesoAcceso.ashx",
+            data: JSON.stringify(datos),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (result) {
+                if (result.blnResultado == true) {
+                    //alert("Registro Grabado corectamente!");
+                    alert("Bienvenido al sistema...porfavor complete sus datos!");
+                    location.href = "WfrmRegistroDatos.aspx";
+                } else {
+                    alert("Ha ocurrido un error: " + result.strMensaje);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
+                var error = eval("(" + XMLHttpRequest.responseText + ")");
+                aler(error.Message);
+            }
+        });
+
+    });
+
+    //---Acceso Clave SMS
+    $('#DivBtnSMS').on('click', function () {
+        var Clave = $("#idClaveSMS").val();
+        var datos = { vOption: "ClaveSMS", vClaveAccesoSMS: Clave };
+        $.ajax({
+            method: "POST",
+            url: "Handler/HandlerProcesoRegistro.ashx",
             data: JSON.stringify(datos),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
