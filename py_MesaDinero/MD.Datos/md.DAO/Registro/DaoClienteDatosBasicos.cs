@@ -129,9 +129,7 @@ namespace md.DAO.Registro
                         }
                         else
                         {
-                            ActualizarNivelRegistroCliente(_BeanClienteDatosBasic);//agregar codigo de verificacion
-                            _BeanResultado.blnResultado = true;
-                            _BeanResultado.strMensaje = "La operación se realizó correctamente!";
+                           _BeanResultado = ActualizarNivelRegistroCliente(_BeanClienteDatosBasic);
                         }
 
                         conexion.Close();
@@ -162,11 +160,28 @@ namespace md.DAO.Registro
                     try
                     {
                         conexion.Open();
-                        comando.ExecuteNonQuery();
+                        SqlDataReader reader = comando.ExecuteReader();
+                        Int32 iNivelRegistro = 0;
+                        string strMensaje = "";
+                        while (reader.Read())
+                        {
+                            strMensaje = reader["strMensaje"].ToString();
+                            iNivelRegistro = Convert.ToInt32(reader["iNivelRegistro"]);
+                        }
+
+                        if (iNivelRegistro == 1)
+                        {
+                            _BeanResultado.blnResultado = true;
+                            _BeanResultado.strMensaje = strMensaje;
+                        }
+                        else
+                        {
+                            _BeanResultado.blnResultado = false;
+                            _BeanResultado.strMensaje = strMensaje;
+                        }
+                        
                         conexion.Close();
                         comando.Dispose();
-                        _BeanResultado.blnResultado = true;
-                        _BeanResultado.strMensaje = "La operación se realizó correctamente!";
                     }
                     catch (Exception ex)
                     {

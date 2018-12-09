@@ -29,7 +29,7 @@ namespace webMesaDinero.Registro.Handler
                 }
                 else if (_BeanClienteDatosBasicos.vOption == "ClaveSMS")
                 {
-                    _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+                    _BeanResultado = ValidarClaveSMS(_BeanClienteDatosBasicos);
                 }
                 
                 context.Response.ContentType ="text/plain";               
@@ -70,7 +70,7 @@ namespace webMesaDinero.Registro.Handler
         {
             _BeanResultado = new BeanResultado();
             _NegClienteDatosBasicos = new NegClienteDatosBasicos();
-            _BeanResultado = _NegClienteDatosBasicos.RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+            _BeanResultado = _NegClienteDatosBasicos.ValidarClaveSMS(_BeanClienteDatosBasicos);
             return _BeanResultado;
         }
 

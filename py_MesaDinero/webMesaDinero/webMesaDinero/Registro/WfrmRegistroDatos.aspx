@@ -12,7 +12,9 @@
 	<link href="../css/auction/auction-box/layout.css" rel="stylesheet" />
 	<link href="../css/register-auction-container/horizontal-progress-bar.css" rel="stylesheet" />
 	<link href="../css/register-auction-container/fancy-input.css" rel="stylesheet" />
-    
+    <!-- JS -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/JsRegistroCliente.js"></script>
     <script src="../js/fancy_input_effect.js"></script>
 	<script src="../js/custom_checkbox_effect.js"></script>
     
@@ -60,34 +62,56 @@
 					<option class="custom-option">DNI</option>
 					<option class="not-an-option" value="" disabled="" selected="">Tipo de Documento</option>
 				</select>
-				<fancy-input id="person-reg-document" placeholder="N° de Documento"><div class="fancy-input-content"><div class="fake-placeholder">N° de Documento</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-name" placeholder="Nombres"><div class="fancy-input-content"><div class="fake-placeholder">Nombres</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-lastname" placeholder="Apellido Paterno"><div class="fancy-input-content"><div class="fake-placeholder">Apellido Paterno</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-lastname2" placeholder="Apellido Materno"><div class="fancy-input-content"><div class="fake-placeholder">Apellido Materno</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-birthdate" placeholder="Fecha de Nacimiento (DD/MM/AA)"><div class="fancy-input-content"><div class="fake-placeholder">Fecha de Nacimiento (DD/MM/AA)</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-email" placeholder="E-mail"><div class="fancy-input-content"><div class="fake-placeholder">E-mail</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-phone" placeholder="Teléfono Celular"><div class="fancy-input-content"><div class="fake-placeholder">Teléfono Celular</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-country" placeholder="Nacionalidad"><div class="fancy-input-content"><div class="fake-placeholder">Pa&iacute;s</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-state" placeholder="Departamento"><div class="fancy-input-content"><div class="fake-placeholder">Departamento</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-state" placeholder="Provincia"><div class="fancy-input-content"><div class="fake-placeholder">Provincia</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-district" placeholder="Distrito"><div class="fancy-input-content"><div class="fake-placeholder">Distrito</div><input value="" type="text"></div></fancy-input>
-				<fancy-input id="person-reg-address" placeholder="Dirección"><div class="fancy-input-content"><div class="fake-placeholder">Dirección</div><input value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-document" placeholder="N° de Documento"><div class="fancy-input-content"><div class="fake-placeholder">N° de Documento</div>
+                    <input id="NroDocumento" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-name" placeholder="Nombres"><div class="fancy-input-content"><div class="fake-placeholder">Nombres</div>
+                    <input id="Nombres" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-lastname" placeholder="Apellido Paterno"><div class="fancy-input-content"><div class="fake-placeholder">Apellido Paterno</div>
+                    <input id="ApellidoPat" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-lastname2" placeholder="Apellido Materno"><div class="fancy-input-content"><div class="fake-placeholder">Apellido Materno</div>
+                    <input id="ApellidoMat" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-birthdate" placeholder="Fecha de Nacimiento (DD/MM/AA)"><div class="fancy-input-content"><div class="fake-placeholder">Fecha de Nacimiento (DD/MM/AA)</div>
+                    <input id="FechaNacimiento" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-email" placeholder="E-mail"><div class="fancy-input-content"><div class="fake-placeholder">E-mail</div>
+                    <input id="Email" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-phone" placeholder="Teléfono Celular"><div class="fancy-input-content"><div class="fake-placeholder">Teléfono Celular</div>
+                    <input id="TelefonoCelular" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-country" placeholder="Nacionalidad"><div class="fancy-input-content"><div class="fake-placeholder">Pa&iacute;s</div>
+                    <input id="Pais" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-state" placeholder="Departamento"><div class="fancy-input-content"><div class="fake-placeholder">Departamento</div>
+                    <input id="Departamento" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-pro-prov" placeholder="Provincia"><div class="fancy-input-content"><div class="fake-placeholder">Provincia</div>
+                    <input id="Provincia" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-district" placeholder="Distrito"><div class="fancy-input-content"><div class="fake-placeholder">Distrito</div>
+                    <input id="Distrito" value="" type="text"></div></fancy-input>
+				<fancy-input id="person-reg-address" placeholder="Dirección"><div class="fancy-input-content"><div class="fake-placeholder">Dirección</div>
+                    <input id="Direccion" value="" type="text"></div></fancy-input>
 			</div>
 			<div class="block-1-2">
 				<div class="block-1-2-1">
 					<div class="sub-title">Situación Laboral:</div>
-					<custom-checkbox class="chx-1" text-content="Dependiente"><div class="custom-checkbox-content inactive">
+                    
+					<custom-checkbox class="chx-1" >
+
+                    <%--Situacion laboral Radio buttons--%>
+                    <div class="radio">
+                      <label><input type="radio"  name="SituacionLaboral" value="D" checked>Dependiente</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="SituacionLaboral" value="I" >Independiente</label>
+                    </div>
+
+                        <div class="custom-checkbox-content inactive">			                
+		                </div>
+					</custom-checkbox>
+					<div class="custom-checkbox-content inactive">
 			<div class="custom-checkbox-icon"></div>
-			<div class="custom-checkbox-text">Dependiente</div>
-		</div></custom-checkbox>
-					<custom-checkbox class="chx-2" text-content="Independiente"><div class="custom-checkbox-content inactive">
-			<div class="custom-checkbox-icon"></div>
-			<div class="custom-checkbox-text">Independiente</div>
+			
 		</div></custom-checkbox>
 					
 				</div>
 				<div class="block-1-2-2">
-					<select class="custom-select">
+					<select class="custom-select" id="OrigenFondos">
 						<option class="custom-option">Fondos Propios</option>
 						<option class="custom-option">Venta de Activos</option>
 						<option class="custom-option">Resultados Acumulados</option>
