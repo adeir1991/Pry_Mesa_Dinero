@@ -17,7 +17,27 @@ namespace md.Entidades.Registro
         public string vClaveAcceso { get; set; }
         public string vIdCliente { get; set; }
         public DateTime vFechaRegistro { get; set; }
-        
+
+        //Clave SMS
+        public string vClaveAccesoSMS { get; set; }
+
+        //--Datos Completos
+        public string vTipoDocumento { get; set; }
+        public string vNroDocumento { get; set; }
+        public string vApellidoMat { get; set; }
+        public DateTime dFechaNacimiento { get; set; }
+        public string vPais { get; set; }
+        public string vDepartamento { get; set; }
+        public string vProvincia { get; set; }
+        public string vDistrito { get; set; }
+        public string vDireccion { get; set; }
+        public string vSituacionLaboral { get; set; }
+        public string vPersonaPolitica { get; set; }
+        public string vOrigenFondos { get; set; }
+        public string vEntidadPublica { get; set; }
+        public string vCargo { get; set; }
+       
+       
 
     }
 }

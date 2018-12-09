@@ -16,7 +16,7 @@
                     <div class="form">
 			            <base-input type="text" placeholder="Ingresar tu clave SMS">
                             <div class="base-input-content">
-                                <input placeholder="Ingresa tu Clave SMS" type="text">
+                                <input placeholder="Ingresa tu Clave SMS" type="text" id="idClaveSMS" />
                            </div>
 			            </base-input>
 			            <div class="base-btn" id="DivBtnSMS">

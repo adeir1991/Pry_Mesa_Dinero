@@ -108,11 +108,12 @@ jQuery(function ($) {
         var Provincia = $("#Provincia").val();
         var Distrito = $("#Distrito").val();
         var Direccion = $("#Direccion").val();
-        var SituacionLaboral = $('input:radio[name=SituacionLaboral]:checked').val();       
-        var ResultadosAcumulados = $("#OrigenFondos").val();
+        var SituacionLaboral = $('input:radio[name=SituacionLaboral]:checked').val();
+        var PersonaPolitica = $('input:radio[name=PersonaPolitica]:checked').val();
+        var OrigenFondos = $("#OrigenFondos").val();
         var EntidadPublica = $("#EntidadPublica").val();
         var Cargo = $("#Cargo").val();
-        var datos = { vOption: "RegistroClienteCompleto", vTipoDocumento: TipoDocumento, vNroDocumento: NroDocumento, vNombres: Nombres, vApellidoPat: ApellidoPat, vApellidoMat: ApellidoMat, vFechaNacimiento: FechaNacimiento, vEmail: Email, vTelefonoCelular: TelefonoCelular, vPais: Pais, vDepartamento: Departamento, vProvincia: Provincia, vDistrito: Distrito, vDireccion: Direccion, vSituacionLaboral: SituacionLaboral, vResultadosAcumulados: ResultadosAcumulados, vEntidadPublica: EntidadPublica, vCargo: Cargo };
+        var datos = { vOption: "RegistroClienteCompleto", vTipoDocumento: TipoDocumento, vNroDocumento: NroDocumento, vNombres: Nombres, vApellidoPat: ApellidoPat, vApellidoMat: ApellidoMat, vFechaNacimiento: FechaNacimiento, vEmail: Email, vTelefonoCelular: TelefonoCelular, vPais: Pais, vDepartamento: Departamento, vProvincia: Provincia, vDistrito: Distrito, vDireccion: Direccion, vSituacionLaboral: SituacionLaboral,vOrigenFondos: OrigenFondos, vPersonaPolitica:PersonaPolitica, vEntidadPublica: EntidadPublica, vCargo: Cargo };
         return;
         $.ajax({
             method: "POST",

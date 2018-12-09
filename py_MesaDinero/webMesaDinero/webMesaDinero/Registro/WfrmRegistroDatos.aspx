@@ -123,18 +123,16 @@
 				</div>
 				<div class="block-1-2-3">
 					<div class="sub-title">Es una persona politicamente expuesta:</div>
-					<div class="checkboxes">
-						<custom-checkbox class="chx-1" text-content="Sí"><div class="custom-checkbox-content inactive">
-			<div class="custom-checkbox-icon"></div>
-			<div class="custom-checkbox-text">Sí</div>
-		</div></custom-checkbox>
-						<custom-checkbox class="chx-2" text-content="No"><div class="custom-checkbox-content inactive">
-			<div class="custom-checkbox-icon"></div>
-			<div class="custom-checkbox-text">No</div>
-		</div></custom-checkbox>
+					<div class="checkboxes">						
+						 <div class="radio">
+                          <label><input type="radio"  name="PersonaPolitica" value="SI" checked>SI</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="PersonaPolitica" value="NO" >NO</label>
+                        </div>
 					</div>
-					<fancy-input class="fi-1" placeholder="Entidad Pública"><div class="fancy-input-content"><div class="fake-placeholder">Entidad Pública</div><input value="" type="text"></div></fancy-input>
-					<fancy-input class="fi-2" placeholder="Cargo"><div class="fancy-input-content"><div class="fake-placeholder">Cargo</div><input value="" type="text"></div></fancy-input>
+					<fancy-input class="fi-1" placeholder="Entidad Pública"><div class="fancy-input-content"><div class="fake-placeholder">Entidad Pública</div><input id="EntidadPublica" value="" type="text"></div></fancy-input>
+					<fancy-input class="fi-2" placeholder="Cargo"><div class="fancy-input-content"><div class="fake-placeholder">Cargo</div><input id="Cargo" value="" type="text"></div></fancy-input>
 					<br>
 					<div id="save-person" class="btn regular"><span class="btn-text">Guardar</span></div>
 

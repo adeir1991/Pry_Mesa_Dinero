@@ -111,9 +111,9 @@ namespace md.DAO.Registro
                 {
                     _BeanClienteDatosBasic = new BeanClienteDatosBasicos();
                     comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@vClave", _BeanClienteDatosBasicos.vClaveAcceso.Trim());
                     try
                     {
+                        comando.Parameters.AddWithValue("@vClaveSMS", _BeanClienteDatosBasicos.vClaveAccesoSMS.Trim());                   
                         conexion.Open();
                         SqlDataReader reader = comando.ExecuteReader();
                         Int32 iEstado = 0;
@@ -193,6 +193,56 @@ namespace md.DAO.Registro
 
             return _BeanResultado;
         }
+
+        public BeanResultado ActualizarDatosCliente(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _DaoConexion = new DaoConexion();
+            string conx = _DaoConexion.GetConexion;
+            BeanClienteDatosBasicos _BeanClienteDatosBasic = null;
+            using (SqlConnection conexion = new SqlConnection(conx))
+            {
+                _BeanResultado = new BeanResultado();
+                using (SqlCommand comando = new SqlCommand("Usp_ValidarClaveSMS", conexion))
+                {
+                    _BeanClienteDatosBasic = new BeanClienteDatosBasicos();
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@vClave", _BeanClienteDatosBasicos.vClaveAcceso.Trim());
+                    try
+                    {
+                        conexion.Open();
+                        SqlDataReader reader = comando.ExecuteReader();
+                        Int32 iEstado = 0;
+                        while (reader.Read())
+                        {
+                            _BeanClienteDatosBasic.vIdCliente = reader["iIdCliente"].ToString();
+                            iEstado = Convert.ToInt32(reader["iEstadoCliente"]);
+                        }
+                        if (iEstado == 1)
+                        {
+                            _BeanResultado.blnResultado = false;
+                            _BeanResultado.strMensaje = "El Cliente se encuentra desactivado. Consulte con el administrador del sistema.";
+                        }
+                        else
+                        {
+                            _BeanResultado = ActualizarNivelRegistroCliente(_BeanClienteDatosBasic);
+                        }
+
+                        conexion.Close();
+                        comando.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        _BeanResultado.blnResultado = false;
+                        _BeanResultado.strMensaje = ex.ToString();
+                    }
+                }
+            }
+
+            return _BeanResultado;
+        }
+
+
+
         
     }
 }

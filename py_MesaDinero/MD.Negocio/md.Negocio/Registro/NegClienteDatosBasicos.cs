@@ -33,5 +33,12 @@ namespace md.Negocio.Registro
             _BeanResultado = _DaoClienteDatosBasicos.ValidarClaveSMS(_BeanClienteDatosBasicos);
             return _BeanResultado;
         }
+
+        public BeanResultado ActualizarDatosCliente(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _DaoClienteDatosBasicos = new DaoClienteDatosBasicos();
+            _BeanResultado = _DaoClienteDatosBasicos.ActualizarDatosCliente(_BeanClienteDatosBasicos);
+            return _BeanResultado;
+        }
     }
 }
