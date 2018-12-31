@@ -1,7 +1,0 @@
-span.derecha{ 
-text-align: right; 
-} 
-
-span.izquierda{ 
-text-align: left; 
-} 

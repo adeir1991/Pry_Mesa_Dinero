@@ -82,7 +82,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 2vw;
-	background-image: url('../../../css/images/icons/logo-corfid.svg');
+	background-image: url('../images/icons/logo-corfid.svg');
 }
 /*Add Account Button*/
 .auction-confirmation-container .add-account-btn {

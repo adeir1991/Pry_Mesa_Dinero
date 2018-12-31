@@ -19,30 +19,47 @@ namespace webMesaDinero.Registro.Handler
         {
             context.Response.ContentType = "text/plain";
             _BeanClienteDatosBasicos = new BeanClienteDatosBasicos();
-            string strJson = new StreamReader(context.Request.InputStream).ReadToEnd();
-            _BeanClienteDatosBasicos = Deserialize<BeanClienteDatosBasicos>(strJson);
-            if (_BeanClienteDatosBasicos != null)
-            {
-                if (_BeanClienteDatosBasicos.vOption=="RegistroCliente")
+            try { 
+                string strJson = new StreamReader(context.Request.InputStream).ReadToEnd();
+                _BeanClienteDatosBasicos = Deserialize<BeanClienteDatosBasicos>(strJson);
+                if (_BeanClienteDatosBasicos != null)
                 {
-                    _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
-                }
-                else if (_BeanClienteDatosBasicos.vOption == "ClaveSMS")
-                {
-                    _BeanResultado = ValidarClaveSMS(_BeanClienteDatosBasicos);
-                }
-                else if (_BeanClienteDatosBasicos.vOption == "RegistroClienteCompleto")
-                {
-                    _BeanResultado = ValidarClaveSMS(_BeanClienteDatosBasicos);
-                }
+                    if (_BeanClienteDatosBasicos.vOption=="RegistroCliente")
+                    {
+                        _BeanResultado = RegistrarClienteDatosBasicos(_BeanClienteDatosBasicos);
+                    }
+                    else if (_BeanClienteDatosBasicos.vOption == "ClaveSMS")
+                    {
+                        _BeanResultado = ValidarClaveSMS(_BeanClienteDatosBasicos);
+                    }
+                    else if (_BeanClienteDatosBasicos.vOption == "RegistroClienteCompleto")
+                    {
+                        _BeanResultado = ActualizarDatosCliente(_BeanClienteDatosBasicos);
+                    }
+                    else if (_BeanClienteDatosBasicos.vOption == "CargaDatosBasicosCliente")
+                    {
+                        _BeanResultado = ActualizarDatosCliente(_BeanClienteDatosBasicos);
+                    }
                 
-                context.Response.ContentType ="text/plain";               
-                context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
-
+                    context.Response.ContentType ="text/plain";               
+                    context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
+                }
+                else
+                {
+                    _BeanResultado = new BeanResultado();
+                    _BeanResultado.blnResultado = false;
+                    _BeanResultado.strMensaje = "No se puede leer datos JSON.";                     
+                    context.Response.ContentType = "text/plain";
+                    context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                context.Response.Write("No Data");
+                _BeanResultado = new BeanResultado();
+                _BeanResultado.blnResultado = false;
+                _BeanResultado.strMensaje = ex.ToString();
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(new JavaScriptSerializer().Serialize(_BeanResultado));
             }
 
         }
@@ -86,6 +103,13 @@ namespace webMesaDinero.Registro.Handler
             return _BeanResultado;
         }
 
+        public BeanResultado CargaDatosBasicosCliente(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _BeanResultado = new BeanResultado();
+            _NegClienteDatosBasicos = new NegClienteDatosBasicos();
+            _BeanResultado = _NegClienteDatosBasicos.CargaDatosBasicosCliente(_BeanClienteDatosBasicos);
+            return _BeanResultado;
+        }
 
 
     }

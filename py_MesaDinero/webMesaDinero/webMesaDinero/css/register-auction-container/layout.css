@@ -26,7 +26,7 @@ register-auction-container, .register-auction-content {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
-	background-image: url('../images/ninth-container/logo-footer.svg');
+	background-image: url('../images/logos/logo-blue.svg');
 }
 .register-auction-header > .cmpnt-2 {
 	grid-area: cmpnt-2;
@@ -56,21 +56,21 @@ register-auction-container, .register-auction-content {
 	width: 100%;
 }
 /*Button styles*/
-.register-auction-body .btn, .list-container .btn {
+.register-auction-body .btn, .popup-container .btn, .list-container .btn {
 	font-size: 1.2vw;
 	width: 100%;
 	height: 100%;
 	border-radius: .5vh;
 	font-family: 'Helvetica Neue Roman';
 	cursor: pointer;
-	line-height: 2.2vw;
+	line-height: 1.2vw;
 	display: grid;
 }
-.register-auction-body .btn.regular, .list-container .btn.regular {
+.register-auction-body .btn.regular, .list-container .btn.regular, .btn.regular {
 	background-color: var(--main-orange);
 	color: #fff;
 }
-.register-auction-body .btn.blue-style, .list-container .btn.blue-style {
+.register-auction-body .btn.blue-style, .popup-container .btn.btn.blue-style, .list-container .btn.blue-style {
 	background-color: var(--main-blue);
 	color: #fff;
 }
@@ -88,7 +88,7 @@ register-auction-container, .register-auction-content {
 	color: var(--main-blue);
 	border: 1px solid var(--main-blue);
 }
-.register-auction-body .btn .btn-text, .list-container .btn .btn-text {
+.register-auction-body .btn .btn-text, .list-container .btn .btn-text, .popup-container .btn .btn-text {
 	color: inherit;
 	font-family: inherit;
 	font-size: inherit;
@@ -122,6 +122,12 @@ register-auction-container, .register-auction-content {
 	outline: none;
 	color: #999999;
 	font-size: 1.1vw;
+	background: transparent;
+	background: url("../images/icons/caret-down-solid.svg") no-repeat right #fff;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-size: 10px;
 }
 .custom-select:focus {
 	outline: none;

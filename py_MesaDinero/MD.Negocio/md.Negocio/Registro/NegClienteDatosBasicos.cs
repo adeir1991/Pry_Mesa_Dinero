@@ -40,5 +40,11 @@ namespace md.Negocio.Registro
             _BeanResultado = _DaoClienteDatosBasicos.ActualizarDatosCliente(_BeanClienteDatosBasicos);
             return _BeanResultado;
         }
+        public BeanResultado CargaDatosBasicosCliente(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _DaoClienteDatosBasicos = new DaoClienteDatosBasicos();
+            _BeanResultado = _DaoClienteDatosBasicos.CargaDatosBasicosCliente(_BeanClienteDatosBasicos);
+            return _BeanResultado;
+        }
     }
 }

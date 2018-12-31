@@ -120,6 +120,7 @@ namespace md.DAO.Registro
                         while (reader.Read())
                         {
                             _BeanClienteDatosBasic.vIdCliente = reader["iIdCliente"].ToString();
+                            _BeanClienteDatosBasic.vTipoCliente = reader["vTipoPersona"].ToString(); 
                             iEstado = Convert.ToInt32(reader["iEstadoCliente"]);
                         }
                         if (iEstado == 1)
@@ -128,7 +129,7 @@ namespace md.DAO.Registro
                             _BeanResultado.strMensaje = "El Cliente se encuentra desactivado. Consulte con el administrador del sistema.";
                         }
                         else
-                        {
+                        {                           
                            _BeanResultado = ActualizarNivelRegistroCliente(_BeanClienteDatosBasic);
                         }
 
@@ -173,6 +174,8 @@ namespace md.DAO.Registro
                         {
                             _BeanResultado.blnResultado = true;
                             _BeanResultado.strMensaje = strMensaje;
+                            _BeanResultado.strIdCliente = _BeanClienteDatosBasicos.vIdCliente.Trim();
+                            _BeanResultado.strTipoPersona = _BeanClienteDatosBasicos.vTipoCliente.Trim();  
                         }
                         else
                         {
@@ -202,29 +205,78 @@ namespace md.DAO.Registro
             using (SqlConnection conexion = new SqlConnection(conx))
             {
                 _BeanResultado = new BeanResultado();
-                using (SqlCommand comando = new SqlCommand("Usp_ValidarClaveSMS", conexion))
+                using (SqlCommand comando = new SqlCommand("Usp_ActualizarDatosCliente", conexion))
                 {
-                    _BeanClienteDatosBasic = new BeanClienteDatosBasicos();
-                    comando.CommandType = System.Data.CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@vClave", _BeanClienteDatosBasicos.vClaveAcceso.Trim());
                     try
                     {
+                        _BeanClienteDatosBasic = new BeanClienteDatosBasicos();
+                        comando.CommandType = System.Data.CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@iIdCliente", _BeanClienteDatosBasicos.vIdCliente.Trim());
+                        comando.Parameters.AddWithValue("@vNombre", _BeanClienteDatosBasicos.vNombre.Trim());
+                        comando.Parameters.AddWithValue("@vApellido", _BeanClienteDatosBasicos.vApellido.Trim());
+                        comando.Parameters.AddWithValue("@vEmail", _BeanClienteDatosBasicos.vCorreo.Trim());
+                        comando.Parameters.AddWithValue("@vCelular", _BeanClienteDatosBasicos.vCelular.Trim());
+                        comando.Parameters.AddWithValue("@vTipoPersona", _BeanClienteDatosBasicos.vTipoCliente.Trim());
+                        comando.Parameters.AddWithValue("@vTipoDocumento", _BeanClienteDatosBasicos.vTipoDocumento.Trim());
+                        comando.Parameters.AddWithValue("@vNroDocumento", _BeanClienteDatosBasicos.vNroDocumento.Trim());
+                        comando.Parameters.AddWithValue("@vApellidoMat", _BeanClienteDatosBasicos.vApellidoMat.Trim());
+                        comando.Parameters.AddWithValue("@dFechaNacimiento", _BeanClienteDatosBasicos.dFechaNacimiento);
+                        comando.Parameters.AddWithValue("@vPais", _BeanClienteDatosBasicos.vPais.Trim());
+                        comando.Parameters.AddWithValue("@vDepartamento", _BeanClienteDatosBasicos.vDepartamento.Trim());
+                        comando.Parameters.AddWithValue("@vProvincia", _BeanClienteDatosBasicos.vProvincia.Trim());
+                        comando.Parameters.AddWithValue("@vDistrito", _BeanClienteDatosBasicos.vDistrito.Trim());
+                        comando.Parameters.AddWithValue("@vDireccion", _BeanClienteDatosBasicos.vDireccion.Trim());
+                        comando.Parameters.AddWithValue("@vSituacionLaboral", _BeanClienteDatosBasicos.vSituacionLaboral.Trim());
+                        comando.Parameters.AddWithValue("@vPersonaPolitica", _BeanClienteDatosBasicos.vPersonaPolitica.Trim());
+                        comando.Parameters.AddWithValue("@vOrigenFondos", _BeanClienteDatosBasicos.vOrigenFondos.Trim());
+                        comando.Parameters.AddWithValue("@vEntidadPublica", _BeanClienteDatosBasicos.vEntidadPublica.Trim());
+                        comando.Parameters.AddWithValue("@vCargo", _BeanClienteDatosBasicos.vCargo.Trim());
+                   
                         conexion.Open();
-                        SqlDataReader reader = comando.ExecuteReader();
-                        Int32 iEstado = 0;
+                        SqlDataReader reader = comando.ExecuteReader();                        
                         while (reader.Read())
                         {
-                            _BeanClienteDatosBasic.vIdCliente = reader["iIdCliente"].ToString();
-                            iEstado = Convert.ToInt32(reader["iEstadoCliente"]);
+                            _BeanResultado.blnResultado = true;
+                            _BeanResultado.strMensaje = reader["strMensaje"].ToString();   
                         }
-                        if (iEstado == 1)
+                        
+                        conexion.Close();
+                        comando.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        _BeanResultado.blnResultado = false;
+                        _BeanResultado.strMensaje = ex.ToString();
+                    }
+                }
+            }
+
+            return _BeanResultado;
+        }
+
+        public BeanResultado CargaDatosBasicosCliente(BeanClienteDatosBasicos _BeanClienteDatosBasicos)
+        {
+            _DaoConexion = new DaoConexion();
+            string conx = _DaoConexion.GetConexion;
+            BeanClienteDatosBasicos _BeanClienteDatosBasic = null;
+            using (SqlConnection conexion = new SqlConnection(conx))
+            {
+                _BeanResultado = new BeanResultado();
+                using (SqlCommand comando = new SqlCommand("Usp_ListarDatosBasicosCliente", conexion))
+                {
+                    try
+                    {
+                        _BeanClienteDatosBasic = new BeanClienteDatosBasicos();
+                        comando.CommandType = System.Data.CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@iIdCliente", _BeanClienteDatosBasicos.vIdCliente.Trim());
+                        conexion.Open();
+                        SqlDataReader reader = comando.ExecuteReader();
+                        while (reader.Read())
                         {
-                            _BeanResultado.blnResultado = false;
-                            _BeanResultado.strMensaje = "El Cliente se encuentra desactivado. Consulte con el administrador del sistema.";
-                        }
-                        else
-                        {
-                            _BeanResultado = ActualizarNivelRegistroCliente(_BeanClienteDatosBasic);
+                            _BeanResultado.blnResultado = true;
+                            _BeanResultado.strIdCliente = _BeanClienteDatosBasicos.vIdCliente.Trim();
+                            _BeanResultado.strTipoPersona = _BeanClienteDatosBasicos.vTipoCliente.Trim();  
+                            //FALTA ACTUALIZACION DE DATOS PARA MOSTRAR LOS BASICOS 
                         }
 
                         conexion.Close();

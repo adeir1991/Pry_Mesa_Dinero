@@ -79,8 +79,14 @@ jQuery(function ($) {
             async: false,
             success: function (result) {
                 if (result.blnResultado == true) {
-                    alert("Bienvenido al sistema...porfavor complete sus datos!");
-                    location.href = "WfrmRegistroDatos.aspx";
+                    alert("Bienvenido al sistema...porfavor complete sus datos!");                    
+                    sessionStorage.setItem('key', result.strIdCliente);
+                    if (result.strTipoPersona == "P") {
+                        location.href = "WfrmRegistroDatos.aspx";
+                    } else {
+                        location.href = "WfrmRegistroDatosCompany.aspx";
+                    }
+                    
                 } else {
                     alert("Ha ocurrido un error: " + result.strMensaje);
                 }
@@ -94,10 +100,11 @@ jQuery(function ($) {
     });
 
     //---Registro cliente Completo
-    $('#save-person').on('click', function () {
+    $('#save-person').on('click', function () {        
         var TipoDocumento = $("#person-reg-doctype").val();
+        var IdCliente = sessionStorage.getItem('key');
         var NroDocumento = $("#NroDocumento").val();
-        var Nombres = $("#Nombres").val();
+        var Nombres = $("#Nombres").val(); 
         var ApellidoPat = $("#ApellidoPat").val();
         var ApellidoMat = $("#ApellidoMat").val();
         var FechaNacimiento = $("#FechaNacimiento").val();
@@ -113,8 +120,16 @@ jQuery(function ($) {
         var OrigenFondos = $("#OrigenFondos").val();
         var EntidadPublica = $("#EntidadPublica").val();
         var Cargo = $("#Cargo").val();
-        var datos = { vOption: "RegistroClienteCompleto", vTipoDocumento: TipoDocumento, vNroDocumento: NroDocumento, vNombres: Nombres, vApellidoPat: ApellidoPat, vApellidoMat: ApellidoMat, vFechaNacimiento: FechaNacimiento, vEmail: Email, vTelefonoCelular: TelefonoCelular, vPais: Pais, vDepartamento: Departamento, vProvincia: Provincia, vDistrito: Distrito, vDireccion: Direccion, vSituacionLaboral: SituacionLaboral,vOrigenFondos: OrigenFondos, vPersonaPolitica:PersonaPolitica, vEntidadPublica: EntidadPublica, vCargo: Cargo };
-        return;
+        var TipoPersona = "P";
+
+        if (IdCliente == "" || IdCliente == null) {
+            alert("Usuario no registrado..!");
+            return;
+        } else {
+            var datos = { vOption: "RegistroClienteCompleto", vTipoDocumento: TipoDocumento, vNroDocumento: NroDocumento, vNombre: Nombres, vApellido: ApellidoPat, vApellidoMat: ApellidoMat, dFechaNacimiento: FechaNacimiento, vCorreo: Email, vCelular: TelefonoCelular, vPais: Pais, vDepartamento: Departamento, vProvincia: Provincia, vDistrito: Distrito, vDireccion: Direccion, vSituacionLaboral: SituacionLaboral, vOrigenFondos: OrigenFondos, vPersonaPolitica: PersonaPolitica, vEntidadPublica: EntidadPublica, vCargo: Cargo, vIdCliente: IdCliente, vTipoCliente: TipoPersona };
+        }        
+
+        //return;
         $.ajax({
             method: "POST",
             url: "Handler/HandlerProcesoRegistro.ashx",
@@ -124,15 +139,15 @@ jQuery(function ($) {
             async: false,
             success: function (result) {
                 if (result.blnResultado == true) {
-                    alert("Bienvenido al sistema...porfavor complete sus datos!");
-                    location.href = "WfrmRegistroDatos.aspx";
+                    alert("Bienvenido al sistema...porfavor complete sus datos!");                    
+                    location.href = "WfrmRegistroBank.aspx";
                 } else {
                     alert("Ha ocurrido un error: " + result.strMensaje);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) { // función que va a ejecutar si hubo algún tipo de error en el pedido
                 var error = eval("(" + XMLHttpRequest.responseText + ")");
-                aler(error.Message);
+                alert(error.Message);
             }
         });
 

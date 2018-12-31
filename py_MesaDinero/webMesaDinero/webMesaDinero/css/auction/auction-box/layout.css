@@ -132,8 +132,13 @@
 }
 .auction-box-container .partners-list > div:not(.list-title) {
 	border: 1px solid #999999;
+	cursor: pointer;
 	color: #999999;
 	font-size: 1vw;
+}
+.auction-box-container .partners-list > div:not(.list-title):hover,
+.auction-box-container .partners-list > div.active {
+	background-color: #f1f4f5;
 }
 .auction-box-container .partners-list > div div {
 	font-size: 1vw;

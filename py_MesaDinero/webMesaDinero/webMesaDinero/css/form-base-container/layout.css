@@ -25,8 +25,8 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 	background-position: center;
 	width: 1vw;
 	height: 2vh;
-	min-width: 8px;
-	min-height: 8px;
+	min-width: 12px;
+	min-height: 12px;
 	right: 2vw;
 	top: 4vh;
 	cursor: pointer;
@@ -37,36 +37,37 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 	place-self: end center;
 	width: 13.2%;
 	height: 39.5%;
-	background-image: url('../images/ninth-container/logo-footer.svg');
+	background-image: url('../images/logos/logo-blue.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
 }
-.form-base-container-content > .form-content {
+.form-content {
 	grid-row:  2 / 3;
 	grid-column: span 1;
 	place-self: center center;
 	width: 36.4%;
+	min-width: 200px;
 	display: grid;
 	grid-template-rows: auto auto;
 }
-.form-base-container-content > .form-content > * {
+.form-content > * {
 	text-align: center;
 	place-self: center center;
 }
-.form-base-container-content > .form-content > .form-base-title {
+.form-content > .form-base-title {
 	font-family: 'Helvetica Neue Roman';
 	color: var(--main-blue);
-	font-size: 2.1vw;
+	font-size: 1.7em;
 }
-.form-base-container-content > .form-content > .parragraph-container,
-.form-base-container-content > .form-content > .form-base-title {
+.form-content > .parragraph-container,
+.form-content > .form-base-title {
 	margin-bottom: 5%;
 }
-.form-base-container-content > .form-content > .parragraph-container {
-	font-size: 1.13vw;
+.form-content > .parragraph-container {
+	font-size: 1em;
 }
-.form-base-container-content > .form-content > .form {
+.form-content > .form {
 	width: 75%;
 	background-color: #fff;
 	border-radius: .3vw;
@@ -95,15 +96,15 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	width: 1vw;
+	width: .85em;
 	height: 100%;
 }
 .base-btn > .base-btn-text {
 	font-family: 'Helvetica Neue Roman';
-	font-size: 1.15vw;
+	font-size: .9em;
 }
 .form-bottom-text {
-	font-size: 1vw;
+	font-size: .8em;
 	margin-top: 4%;
 	margin-bottom: 4%;
 }
@@ -116,7 +117,7 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 	cursor: pointer;
 }
 .middle-text {
-	font-size: 1.1vw;
+	font-size: .85em;
 	margin: 3% 0 3% 0;
 }
 .conditions {
@@ -140,7 +141,7 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 	color: #999999;
 }
 .conditions-text {
-	font-size: 1.1vw;
+	font-size: 1em;
 	color: var(--font-blue);
 }
 .login-selection {
@@ -156,7 +157,7 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 
 }
 .login-selection span {
-	font-size: 1.55vw;
+	font-size: 1.3em;
 	color: var(--main-blue);
 	font-family: 'Helvetica Neue Roman';
 }
@@ -174,4 +175,26 @@ login-form, create-password, forgotten-password, update-password, sign-in {
 }
 .login-selection > div > span {
 	margin: 12% 0 12% 0;
+}
+@media screen and (max-width: 700px) {
+	.form-content {
+		width: 90%;
+	}
+	.form-content > .form-base-title {
+		font-size: 1.5em;
+	}
+	.form-content > .parragraph-container {
+		font-size: .8em;
+	}
+	.form-base-container-content > .dark-logo {
+		width: 50%;
+		height: 60%;
+		max-height: 43px;
+	}
+	.login-selection span {
+		font-size: 1.2em;
+	}
+	.base-btn > .base-btn-icon {
+		width: .75em;
+	}
 }

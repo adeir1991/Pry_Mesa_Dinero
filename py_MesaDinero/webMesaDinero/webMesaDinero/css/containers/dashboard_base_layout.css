@@ -176,10 +176,13 @@
 .dashboard-container-content .popup-menu .popup-menu-option {
 	width: 100%;
 	display: grid;
-	padding: 5%;
+	padding: 5% 0 5% 0;
 	grid-template-columns: 1fr 5fr;
 	cursor: pointer;
 	color: #666666;
+}
+.dashboard-container-content .popup-menu .popup-menu-option:hover {
+	background-color: #f1f4f5;
 }
 .dashboard-container-content .popup-menu .popup-menu-option .popup-menu-option-text {
 	font-size: 1vw;

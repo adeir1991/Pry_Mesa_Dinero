@@ -17,14 +17,16 @@
 .company-block > .sub-title {
 	grid-area: sub-title-1;
 }
-.company-block > .company-block-content {
+.company-block .company-block-content {
 	grid-area: content-block;
+}
+.company-block .company-block-content > div {
 	display: grid;
 	grid-template-columns: repeat( auto-fit, minmax(170px, 1fr) );
 	column-gap: 2.5%;
 	row-gap: 2vh;
 }
-.company-block.authorized-people > .company-block-content {
+.company-block.authorized-people .company-block-content > div {
 	grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
 }
 .company-block > .btn-round {
@@ -39,4 +41,7 @@
 }
 .company-block fancy-input, .company-block .custom-select {
 	height: 5vh;
+}
+.company-block > .sub-title {
+	color: var(--main-blue);
 }

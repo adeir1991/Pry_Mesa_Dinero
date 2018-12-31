@@ -27,7 +27,7 @@ ninth-container > .meta-content > .logo {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	background-image: url('../../images/ninth-container/logo-footer.svg');
+	background-image: url('../../images/logos/logo-blue.svg');
 }
 ninth-container > .meta-content > .rights {
 	grid-area: rights;

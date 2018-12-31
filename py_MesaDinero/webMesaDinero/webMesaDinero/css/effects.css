@@ -1,0 +1,120 @@
+.new-form {
+	position: relative;
+	margin-bottom: 10px;
+}
+.remove-form {
+	position: absolute;
+	left: 101%;
+	top: -10px;
+	width: .6em;
+	height: .6em;
+	background-image: url(./images/form-base-container/equis-cerrar.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+/*Custom Selects*/
+div.custom-select-box {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 12px;
+	user-select: none;
+}
+div.custom-select-box > .custom-select-icon {
+	cursor: pointer;
+	align-self: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url('./images/icons/arrow-down.svg');
+	width: 10px;
+	height: 10px;
+}
+div.custom-select-box > .custom-select-option-list {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+div.custom-select-box.show-options > .custom-select-option-list {
+	display: block;
+}
+div.custom-select-box > ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	z-index: 1000;
+	background-color: #fff;
+}
+div.custom-select-box li,
+.custom-select-value {
+	display: grid;
+	grid-template-columns: 50px 1fr;
+	align-items: center;
+	column-gap: 5px;
+}
+.default-value {
+	grid-column: 1 / 4;
+	justify-self: start;
+}
+div.custom-select-box li:hover {
+	background-color: var(--main-blue);
+	color: #fff;
+}
+.custom-select-box.custom-select {
+	width: 100%;
+	background-color: #fff;
+	border: none;
+	border-bottom: 1px solid #999999;
+	outline: none;
+	color: #999999;
+	font-size: 1.1vw;
+	background: transparent;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-size: 10px;
+}
+.custom-select-box.custom-select.show-options {
+	outline: none;
+	color: var(--main-blue);
+	border-bottom-color: var(--main-blue);
+}
+.custom-select-box .icon {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	align-self: stretch;
+	justify-self: stretch;
+	grid-area: unset;
+}
+.custom-select-box .bcp {
+	background-image: url('./images/icons/bcp-color.svg');
+}
+div.custom-select-box li:hover .bcp {
+	background-image: url('./images/icons/bcp.svg');
+}
+.custom-select-box .interbank {
+	background-image: url('./images/icons/interbank-color.svg');
+}
+div.custom-select-box li:hover .interbank {
+	background-image: url('./images/icons/interbank.svg');
+}
+.custom-select-box .scotiabank {
+	background-image: url('./images/icons/scotiabank-color.svg');
+}
+div.custom-select-box li:hover .scotiabank {
+	background-image: url('./images/icons/scotiabank.svg');
+}
+.custom-select-box .banbif {
+	background-image: url('./images/icons/banbif-color.svg');
+}
+div.custom-select-box li:hover .banbif {
+	background-image: url('./images/icons/banbif.svg');
+}
+.bank-list {
+	max-height: 177px;
+	min-height: 174px;
+}

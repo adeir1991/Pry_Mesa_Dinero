@@ -1,23 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Registro/WfrmMasterPageRegistro.Master" AutoEventWireup="true" CodeBehind="WfrmRegistroDatos.aspx.cs" Inherits="webMesaDinero.Registro.WfrmRegistroDatos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- General -->	
-    <link href="../css/registration/company-registration/layout_1.css" rel="stylesheet" />
-	<!-- Registración - Base -->
-	<link href="../css/registration/register-container/layout.css" rel="stylesheet" />	
-    <link href="../css/registration/person-registration/layout.css" rel="stylesheet" />
+    <!-- Registración - Base -->
+	<link rel="stylesheet" type="text/css" href="../css/components/special-counter/special-counter.css" />
+	<link rel="stylesheet" type="text/css" href="../css/registration/register-container/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/registration/person-registration/layout.css" />
 	<!-- Containers -->
+	<link rel="stylesheet" type="text/css" href="../css/containers/auction_confirmation_box_layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/containers/basic_container_layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/containers/complex_container_layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/containers/dashboard_base_layout.css" />
 	<!-- Subasta -->
-	<link href="../css/register-auction-container/layout_2.css" rel="stylesheet" />	
-    <link href="../css/register-auction-container/custom-checkbox.css" rel="stylesheet" />
-	<link href="../css/auction/auction-box/layout.css" rel="stylesheet" />
-	<link href="../css/register-auction-container/horizontal-progress-bar.css" rel="stylesheet" />
-	<link href="../css/register-auction-container/fancy-input.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/register-auction-container/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/register-auction-container/custom-checkbox.css" />
+	<link rel="stylesheet" type="text/css" href="../css/auction/auction-box/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/register-auction-container/horizontal-progress-bar.css" />
+	<link rel="stylesheet" type="text/css" href="../css/register-auction-container/fancy-input.css" />
     <!-- JS -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/JsRegistroCliente.js"></script>
     <script src="../js/fancy_input_effect.js"></script>
 	<script src="../js/custom_checkbox_effect.js"></script>
-    
+    <script src="../js/close_popup.js"></script>
+    <script src="../js/WfrmRegistroDatos.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <person-registration><div class="register-auction-content"><div class="register-auction-header">
@@ -85,7 +89,7 @@
 				<fancy-input id="person-reg-district" placeholder="Distrito"><div class="fancy-input-content"><div class="fake-placeholder">Distrito</div>
                     <input id="Distrito" value="" type="text"></div></fancy-input>
 				<fancy-input id="person-reg-address" placeholder="Dirección"><div class="fancy-input-content"><div class="fake-placeholder">Dirección</div>
-                    <input id="Direccion" value="" type="text"></div></fancy-input>
+                    <input id="Direccion" value="" type="text"></div></fancy-input>                
 			</div>
 			<div class="block-1-2">
 				<div class="block-1-2-1">

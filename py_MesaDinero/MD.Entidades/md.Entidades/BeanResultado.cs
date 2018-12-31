@@ -13,5 +13,7 @@ namespace md.Entidades
         public Boolean blnResultado { get; set; }
         public String strMensaje { get; set; }
         public Object outputParam { get; set; }
+        public String strIdCliente { get; set; }
+        public String strTipoPersona { get; set; }
     }
 }
